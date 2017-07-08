@@ -20,8 +20,8 @@ import java.util.Map;
 
 public class AutomationTests {
 
-    private final static String EMAIL = "alex@bluesands.com";
-    private final static String PASSWORD = "iuhgfjnvj134!";
+    private final static String EMAIL = "alice.bobington@bluesands.com";
+    private final static String PASSWORD = "BJSSTest";
     private final static String CONTINUE_SHOPPING_XPATH = "//*[@title='Continue shopping']";
     private final static String SUBMIT_XPATH = "//*[@id=\"add_to_cart\"]/button";
     private final static String MESSAGE = "the quick brown fox jumped iver the lazy dog";
@@ -225,9 +225,9 @@ public class AutomationTests {
                     //catch Assertion error, take screenshot, update error message and send it
                     }catch (AssertionError assertionError){
                             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                            FileUtils.copyFile(scrFile, new File("/Users/frspare/Desktop/" + scrFile.getName()));
+                            FileUtils.copyFile(scrFile, new File("/tmp/" + scrFile.getName()));
                             throw new AssertionError("A assertion error has been captured," +
-                                    "\n a screen shot has been saved \"/Users/frspare/Desktop//screenshot.png\"\n" + assertionError);
+                                    "\n a screen shot has been saved " + scrFile.getPath() + "\n" + assertionError);
                         }
                     break;
                 }
